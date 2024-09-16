@@ -12,9 +12,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
-    @Autowired
 
+    @Autowired
     private PacienteService pacienteService;
+
+    // Obtener pacientes por ciudad
+    @GetMapping("/ciudad")
+    public List<Paciente> getPacientesPorCiudad(@RequestParam String ciudad) {
+        return pacienteService.findPacientesByCiudad(ciudad);
+    }
 
     // Obtener todos los pacientes
     @GetMapping
@@ -26,11 +32,7 @@ public class PacienteController {
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> obtenerPacientePorId(@PathVariable Long id) {
         Optional<Paciente> paciente = pacienteService.obtenerPacientePorId(id);
-        if (paciente.isPresent()) {
-            return ResponseEntity.ok(paciente.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return paciente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Crear un nuevo paciente

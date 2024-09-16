@@ -30,4 +30,8 @@ public class PacienteService {
         pacienteRepository.deleteById(id);
     }
 
+    // Método para buscar pacientes por ciudad
+    public List<Paciente> findPacientesByCiudad(String ciudad) {
+        return pacienteRepository.findPacientesByCiudad(ciudad);
+    }
 }
