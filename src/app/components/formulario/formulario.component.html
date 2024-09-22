@@ -1,0 +1,285 @@
+<div>
+  <mat-horizontal-stepper labelPosition="bottom" class="fondo">
+    <mat-step label="Datos 1">
+      <div class="body fondo">
+        <div class="login">
+          <form [formGroup]="formulario"  (ngSubmit)="consultar()">
+            <h1 class="form-title">Datos Paciente</h1>
+
+            <mat-form-field class="ancho">
+              <mat-label>Tipo de identificación </mat-label>
+              <mat-select type="" matInput formControlName="tipoId" [class.is-invalid]="tipoIdNoValido">
+                <mat-option value="CC">CEDULA</mat-option>
+                <mat-option value="CE">CEDULA EXTRANJERIA</mat-option>
+                <mat-option value="DIPLOMATICO">DIPLOMATICO</mat-option>
+                <mat-option value="DOC.IDENT.DE EXTRANJEROS">DOC.IDENT.DE EXTRANJEROS</mat-option>
+                <mat-option value="IDENT.FISCAL PARA EXT.">IDENT.FISCAL PARA EXT.</mat-option>
+                <mat-option value="NIT">NIT</mat-option>
+                <mat-option value="NIT PERSONAS NATURALES">NIT PERSONAS NATURALES</mat-option>
+                <mat-option value="NUIP">NUIP</mat-option>
+                <mat-option value="PASAPORTE">PASAPORTE</mat-option>
+                <mat-option value="REGISTRO CIVIL">REGISTRO CIVIL</mat-option>
+                <mat-option value="TI">TARJ.IDENTIDAD</mat-option>
+                <mat-option value="CERTIFICADO NACIONAL VIVO">CERTIFICADO NACIONAL VIVO</mat-option>
+                <mat-option value="PASAPORTE ONU">PASAPORTE ONU</mat-option>
+                <mat-option value="PERMISO ESPECIAL PERMANENCIA">PERMISO ESPECIAL PERMANENCIA</mat-option>
+                <mat-option value="SALVOCONDUCTO DE PERMANENCIA">SALVOCONDUCTO DE PERMANENCIA</mat-option>
+                <mat-option value="PERMISO ESPECIAL FORMACN PEPFF">PERMISO ESPECIAL FORMACN PEPFF</mat-option>
+                <mat-option value="PERMISO POR PROTECCION TEMPORL">PERMISO POR PROTECCION TEMPORL</mat-option>
+              </mat-select>
+              <small class="rojo" *ngIf="tipoIdNoValido">El tipo de indentificación es un campo requerido</small>
+            </mat-form-field>
+
+
+            <mat-form-field class="ancho">
+              <mat-label>Número de identificación</mat-label>
+              <input type="text" matInput formControlName="id" [class.is-invalid]="idNoValido">
+              <small class="rojo" *ngIf="idNoValido">Ingrese solo números</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Primer Nombre</mat-label>
+              <input type="" matInput formControlName="primerNombre" [class.is-invalid]="primerNombreNoValido">
+              <small *ngIf="primerNombreNoValido" class="rojo">Ingrese solo letras</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Otros Nombre</mat-label>
+              <input type="" matInput formControlName="segundoNombre" [class.is-invalid]="segundoNombreNoValido">
+              <small *ngIf="segundoNombreNoValido" class="rojo">Ingrese solo letras</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Primer Apellido</mat-label>
+              <input type="text" matInput formControlName="primerApellido" [class.is-invalid]="primerApellidoNoValido">
+              <small  *ngIf="primerApellidoNoValido" class="rojo">Ingrese solo letras</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Segundo Apellido</mat-label>
+              <input type="text" matInput formControlName="segundoApellido" [class.is-invalid]="segundoApellidoNoValido">
+              <small *ngIf="segundoApellidoNoValido" class="rojo">Ingrese solo letras</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <!-- El input de fecha no permite seleccionar una fecha mayor a hoy -->
+              <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" [class.is-invalid]="fechaNacimientoNoValido" [max]="fechaMax">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <small *ngIf="fechaNacimientoNoValido" class="rojo">Ingrese una fecha validad (MM/DD/YYYY)</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Genero</mat-label>
+              <mat-select type="" matInput formControlName="genero" [class.is-invalid]="generoNoValido">
+                <mat-option value="M">Masculino</mat-option>
+                <mat-option value="F">Femenino</mat-option>
+              </mat-select>
+              <small *ngIf="generoNoValido" class="rojo">Ingrese un genero</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Estado civil</mat-label>
+              <mat-select type="" matInput formControlName="estadoCivil" [class.is-invalid]="estadoCivilNoValido"> 
+                <mat-option value="Soltero(a)">Soltero(a)</mat-option>
+                <mat-option value="Casado(a)">Casado(a)</mat-option>
+                <mat-option value="Divorciado(a)">Divorciado(a)</mat-option>
+                <mat-option value="Viudo(a)">Viudo(a)</mat-option>
+              </mat-select>
+              <small *ngIf="estadoCivilNoValido" class="rojo">Ingrese una estado civil</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Departamento</mat-label>
+              <input type="text" matInput formControlName="departamento" [class.is-invalid]="">
+              <small *ngIf="departamentoNoValido" class="rojo">Ingrese una departamento</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Ciudad</mat-label>
+              <input type="text" matInput formControlName="ciudad" [class.is-invalid]="ciudadNoValido">
+              <small *ngIf="ciudadNoValido" class="rojo">Ingrese una ciudad</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Dirección</mat-label>
+              <input type="text" matInput formControlName="direccion" [class.is.invalid]="direcccionNoValido">
+              <small *ngIf="direcccionNoValido" class="rojo">Ingrese una dirección</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Telefono de contacto</mat-label>
+              <input type="number" matInput formControlName="telefonoContacto" [class.is-invalid]="telefonoContactoNoValido">
+              <small *ngIf="telefonoContactoNoValido" class="rojo">Ingrese solo números</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Celular de contacto</mat-label>
+              <input type="number" matInput formControlName="celularContacto" [class.is-invalid]="">
+              <small *ngIf="celularContactoNoValido" class="rojo">Ingrese solo números</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Correo electronico</mat-label>
+              <input type="email" matInput formControlName="correoElectronico"  [class.is-invalid]="correoElectronicoNoValido">
+              <small *ngIf="correoElectronicoNoValido" class="rojo">Ingrese un email valido</small>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Nacionalidad</mat-label>
+              <mat-select type="" matInput formControlName="nacionalidad" [class.is-invalid]="nacionalidadNoValido">
+                <mat-option value="Alemania">Alemania</mat-option>
+                <mat-option value="Argentina">Argentina</mat-option>
+                <mat-option value="Australia">Australia</mat-option>
+                <mat-option value="Brasil">Brasil</mat-option>
+                <mat-option value="Canadá">Canadá</mat-option>
+                <mat-option value="Chile">Chile</mat-option>
+                <mat-option value="China">China</mat-option>
+                <mat-option value="Colombia">Colombia</mat-option>
+                <mat-option value="España">España</mat-option>
+                <mat-option value="Estados Unidos">Estados Unidos</mat-option>
+                <mat-option value="Francia">Francia</mat-option>
+                <mat-option value="India">India</mat-option>
+                <mat-option value="Italia">Italia</mat-option>
+                <mat-option value="Japón">Japón</mat-option>
+                <mat-option value="México">México</mat-option>
+                <mat-option value="Perú">Perú</mat-option>
+                <mat-option value="Reino Unido">Reino Unido</mat-option>
+                <mat-option value="Rusia">Rusia</mat-option>
+                <mat-option value="Sudáfrica">Sudáfrica</mat-option>
+                <mat-option value="Suiza">Suiza</mat-option>
+                <mat-option value="Uruguay">Uruguay</mat-option>
+                <mat-option value="Venezuela">Venezuela</mat-option>
+              </mat-select>
+              <small class="rojo" *ngIf="nacionalidadNoValido">Ingrese una nacionalidad</small>
+            </mat-form-field>
+
+            <div class="custom-file-upload">
+            <mat-label>Foto: </mat-label>
+            <input type="file" class="file-upload" (change)="onFileChange($event)" formControlName="fotoPaciente" [class.is-invalid]="fotoNoValido">
+            <small class="rojo" *ngIf="fotoNoValido">Solo se permiten archivos JPEG, PNG o JPG</small>
+          </div>
+
+            <div class="button">
+              <button mat-raised-button matStepperNext (click)="limpiar()">Limpiar</button>
+              <button mat-raised-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-step>
+
+    <!-- <mat-step label="Datos 2">
+       <div class="body fondo">
+        <div class="login"> -->
+          <!-- <form [formGroup]="formulario" (ngSubmit)="consultar()">  -->
+
+            <!-- <h1 class="form-title">Información de Contacto de Emergencia</h1> -->
+
+          <!--  <mat-form-field class="ancho">
+              <mat-label>Nombre completo del contacto</mat-label>
+              <input type="text" matInput formControlName="nombreContacto">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Relación con el paciente</mat-label>
+              <input type="text" matInput formControlName="relacionPaciente">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Celular de contacto</mat-label>
+              <input type="number" matInput formControlName="celularContacto">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Celular de contacto</mat-label>
+              <input type="number" matInput formControlName="telefonoContacto">
+            </mat-form-field> -->
+
+            <!-- <div class="button">
+              <button mat-raised-button matStepperPrevious>Atras</button>
+              <button mat-raised-button matStepperNext>Siguiente</button>
+           </div> -->
+  <!-- </form> -->
+        <!-- </div>
+      </div> 
+    </mat-step>
+
+    <mat-step label="Datos 3">
+      <div class="body fondo">
+        <div class="login"> -->
+        <!--  <form [formGroup]="formulario" (ngSubmit)="consultar()"> -->
+
+            <!-- <h1 class="form-title">Información Médica Básica</h1> -->
+
+          <!-- <mat-form-field class="ancho">
+              <mat-label>Grupo sanguíneo</mat-label>
+              <mat-select type="" matInput formControlName="grupoSanguineo">
+                <mat-option value="A+">A+</mat-option>
+                <mat-option value="A-">A-</mat-option>
+                <mat-option value="B+">B+</mat-option>
+                <mat-option value="B-">B-</mat-option>
+                <mat-option value="AB+">AB+</mat-option>
+                <mat-option value="AB-">AB-</mat-option>
+                <mat-option value="O+">O+</mat-option>
+                <mat-option value="O-">O-</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Alergias conocidas</mat-label>
+              <input type="" matInput formControlName="alergiasConocidas">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Enfermedades crónicas</mat-label>
+              <input type="" matInput >
+              formControlName="enfermedadesCronicas" 
+            </mat-form-field>
+
+
+
+
+            <mat-form-field class="ancho">
+              <mat-label>Medicamentos que toma regularmente</mat-label>
+              <input type="" matInput formControlName="medicamentos">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Antecedentes quirúrgicos</mat-label>
+              <input type="" matInput formControlName="antecedentesQuirurgicos">
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+              <mat-label>Historial médico familiar</mat-label>
+              <input type="" matInput formControlName="historialMedicoFamiliar">
+            </mat-form-field>
+
+          <mat-form-field class="ancho">
+            <mat-label>Fuma</mat-label>
+            <mat-select type="" matInput formControlName="fuma">
+                <mat-option value="Si">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="ancho">
+            <mat-label>Consume alcohol</mat-label>
+            <mat-select type="" matInput formControlName="consumeAlcohol">
+                <mat-option value="Si">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+
+            <!-- <div class="button">
+              <button mat-raised-button matStepperPrevious>Atras</button>
+              <button type="submit" mat-raised-button>Ingresar</button>
+            </div> -->
+
+         <!-- </form> -->
+        <!-- </div>
+      </div> 
+    </mat-step>
+  </mat-horizontal-stepper> -->

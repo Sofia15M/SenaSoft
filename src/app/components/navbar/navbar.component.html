@@ -1,0 +1,38 @@
+<mat-sidenav-container class="example-container" autosize>
+  <!-- Sidenav para pantallas pequeñas, abierto desde la derecha -->
+  <mat-sidenav #sidenav mode="over" class="mobile-sidenav" position="end">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/main'" (click)="sidenav.close()">Home</a>
+      <a mat-list-item [routerLink]="'/formulario'" (click)="sidenav.close()">Formulario</a>
+      <a mat-list-item [routerLink]="'/tiempo'" (click)="sidenav.close()">Tiempo</a>
+      <a mat-list-item [routerLink]="'/calendario'" (click)="sidenav.close()">Tabla paciente</a>
+      <a mat-list-item [routerLink]="''" (click)="sidenav.close()">Tabla historia clínica</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar class="fondo">
+      <span>Formulario</span>
+      
+      <span class="example-spacer"></span>
+
+      <!-- Botón de menú para pantallas pequeñas -->
+      <button mat-icon-button (click)="sidenav.toggle()" class="mobile-menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- Botones visibles en pantallas grandes -->
+      <div class="desktop-menu">
+        <button mat-button [routerLink]="'/main'" class="white-button">Home</button>
+        <button mat-button [routerLink]="'/formulario'" class="white-button">Formulario</button>
+        <button mat-button [routerLink]="'/tiempo'" class="white-button">Tiempo</button>
+        <button mat-button [routerLink]="'/calendario'" class="white-button">Tabla paciente</button>
+        <button mat-button [routerLink]="''" class="white-button">Tabla historia clínica</button>
+      </div>
+    </mat-toolbar>
+
+    <!-- Aquí iría el contenido del componente que estás mostrando -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

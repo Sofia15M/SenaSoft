@@ -1,0 +1,36 @@
+/* Paginador con margen superior */
+.paginator-container {
+  margin-top: 10px; /* Añade un margen superior al paginador */
+}
+
+.button {
+  margin-top: 10px;
+}
+
+/* Haz que la tabla ocupe todo el ancho disponible */
+.full-width-table {
+  width: 100%; /* Hace que la tabla ocupe el 100% del contenedor */
+}
+
+/* Asegura que el contenedor de la tabla se ajuste y permita desplazamiento en pantallas pequeñas */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Agrega un scroll horizontal si la tabla es muy ancha */
+}
+
+
+/* Ajustes generales para centrar contenido */
+.body {
+  padding: 20px;
+}
+
+.login {
+  width: 100%;
+  max-width: 100%; /* Máximo ancho para pantallas grandes */
+}
+
+button.ancho {
+  width: 100%;
+}
+
+

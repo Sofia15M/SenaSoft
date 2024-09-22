@@ -1,0 +1,22 @@
+<div class="body">
+  <div class="login">
+    <button type="submit" class="ancho button" mat-raised-button (click)="toggleForm()" (click)="consultar()">
+      {{ isFormVisible ? 'Ocultar Tiempo' : 'Mostrar Tiempo' }}
+    </button>
+
+    <form *ngIf="isFormVisible">
+      <h1 class="form-title">Tiempo del clima</h1>
+
+      <div>
+        <ul>
+          <li>Descripción: {{ descripcion }}</li>
+          <li>Temperatura: {{ temperatura }}</li>
+          <li>Humedad: {{ humedad }}</li>
+          <li>Ciudad: {{ name }}</li>
+          <li>Latitud: {{ latitud }}</li>
+          <li>Longitud: {{ longitud }}</li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

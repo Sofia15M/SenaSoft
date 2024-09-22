@@ -1,0 +1,54 @@
+/* .fondo {
+  background-color: white;
+  padding: 16px; /* Agrega algo de relleno si es necesario 
+} */
+
+  .form-title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+  }
+  
+  .ancho {
+    width: 100%;
+  }
+
+  .rojo{
+    color: brown;
+  }
+
+
+  .custom-file-upload {
+    background-color: #e1eaea; /* Color de fondo similar */
+    padding: 18px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+
+    display: flex;
+    align-items: center; /* centrar el nombre foto */
+  }
+  
+  .file-upload {
+    width: 100%;
+    border: none; /* Sin bordes en el input cuando selecciona */
+    font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+    /* padding: 8px 0; Añade algo de espaciado */
+  }
+  
+  .file-upload::file-selector-button {
+    display: none; /* Oculta el botón de selección por defecto */
+  }
+
+
+mat-label {
+  color: black;
+  background-color: transparent;
+}
+  
+  .body {
+      padding: 1px; 
+  }
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+

@@ -1,0 +1,24 @@
+.body {
+  display: flex;
+  padding: 50px;
+  height: 100vh;
+  /* Asegura que el contenido ocupe toda la altura de la pantalla */
+}
+
+.login {
+  justify-content: space-between;
+  /* Distribuye los elementos a los lados */
+  align-items: flex-start;
+  /* Alinea los elementos al inicio en el eje vertical */
+  width: 100%;
+  /* Ajusta el ancho de la sección de login a tu gusto */
+}
+
+.ancho {
+  width: 100%;
+}
+
+.form-title {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+}

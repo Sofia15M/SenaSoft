@@ -1,0 +1,51 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+  }  
+
+.fondo {
+  background-color: rgb(95, 152, 152);
+  color: white;
+}
+
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desktop-menu {
+  display: flex;
+  color: aliceblue;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+}
+
+.example-container {
+  height: 100vh;
+}
+
+.mobile-sidenav {
+  width: 250px;
+}
+
+.button {
+  color: aliceblue;
+}
+
+.white-button {
+  color: white; /* Cambia el color de los botones a blanco */
+}
